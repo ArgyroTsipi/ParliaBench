@@ -1000,6 +1000,58 @@
         <div id="results" class="tab-content">
             <div class="card" style="background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);">
                 <h2 style="color: #006064; border-bottom: none; margin-top: 0;">Key Findings & Results</h2>
+                <div class="card">
+                    <h2> FineTuning Impact</h2>
+                    <img src="images/finetuning_impact.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> The horizontal bar chart displays percentage improvements from baseline to fine-tuned models across multiple evaluation metrics. Yi 6B shows the most impressive gains, with J_Auth improving by 106.4% and several other metrics showing 30–70% increases. For most models, PSA and Party Align show significant improvement. However, some metrics show decreases, such as GRUEN score and Bert score. The mixed results across metrics highlight that fine-tuning optimizes certain dimensions while potentially compromising others, emphasizing the importance of multi-metric evaluation.</p>
+                </div>
+            
+                <div class="card">
+                    <h2> FineTuning Improvement Methods</h2>
+                    <img src="images/finetuning_improvement_methods.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p>The heatmap displays absolute changes in performance from baseline to fine-tuned models, separated by computational and LLM-judge metrics. Yi 6B demonstrates the strongest improvements across both measurement categories, showing particularly dramatic gains in LLM-judge metrics (0.237). Llama 3.1 8B also shows substantial positive changes (0.116 LLM-judge, 0.050 computational). In contrast, Qwen2 7B exhibits slight negative changes in LLM-judge metrics (−0.026), while Gemma 2 9B shows minimal improvement. The results indicate that LLM-judge metrics are generally more sensitive to fine-tuning effects than computational metrics.</p>
+                </div>
+
+                <div class="card">
+                    <h2> Stability Performance</h2>
+                    <img src="images/stability_analysis.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> The bar chart presents stability scores calculated as 100/(1 + CV) across three dimensions: Party Stability, Topic Stability, and Orientation Stability for five model architectures. All models achieve remarkably high topic and orientation stability scores (> 91), indicating consistent performance across different subject matters and political orientations. Party stability shows the greatest variation among models, suggesting this dimension is most sensitive to model architecture differences.</p>
+                </div>
+                
+                <div class="card">
+                    <h2> Party Performance</h2>
+                    <img src="images/party_performance.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> Party alignment performance varied substantially across models. Major parties (Conservative, Labour) achieved stable performance across models, benefiting from substantial training data (58.9%,24.3%). Minor parties exhibited greater variability. Mistral struggled with heterogeneous groups (Non-Affiliated: 0.436), while Qwen excelled with ideologically coherent minorities (Bishops: 0.664). Yi demonstrated robust cross-party performance (0.614-0.633). Both new political authenticity metrics (PSA and Party Align) successfully discriminate their target political dimensions. Party Align distinguishes parties while PSA distinguishes orientations (both p < 0.001). Our analysis reveals that Party Align performance depends primarily on data abundance and ideological coherence rather than party size alone. Models successfully learn party-specific language patterns when training data provides clear stylistic signals, indicating targeted data collection for under-represented parties could improve coverage. </p>
+                </div>
+                <div class="card">
+                    <h2> Party Difficulty</h2>
+                    <img src="images/party_difficulty.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> Applying cross-context stability analysis, party difficulty scores ranged narrowly (0.382-0.456), with no statistically significant differences. This suggests relatively consistent modeling challenges across parties regardless of size or ideological composition.</p>
+                </div>
+                
+                <div class="card">
+                    <h2> Orientation Performance</h2>
+                    <img src="images/orientation_performance.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> Performance across political orientations showed expected patterns. Centrist positions dominated the dataset and achieved higher scores. Model-specific strengths emerged as both Gemma, Yi, Llama and Qwen achieved highest scores on Right positions and Mistral underperformed consistently, indi- cating architectural rather than ideological limitations.</p>
+                </div>
+                
+                <div class="card">
+                    <h2> Orientation Difficulty</h2>
+                    <img src="images/orientation_difficulty.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> No significant differences between political orientations.</p>
+                </div>
+                
+                <div class="card">
+                    <h2> Topic Performance</h2>
+                    <img src="images/topic_performance.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> The figure hows model performance across topic domains. Science achieved lowest scores (avg 0.516), while Economics (0.610) and European Union (0.606) showed highest performance.</p>
+
+                </div>
+                <div class="card">
+                    <h2>Topic Difficulty</h2>
+                    <img src="images/topic_difficulty.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+                    <p> Science and Geography ranked as most difficult while Finance, Business, and Economics ranked lowest. Technical and natural science domains display higher cross-model disagreement than economic and political topics, consistent with greater terminological specialization and rapidly evolving concepts. In contrast, economic and political discussions employs more stable conceptual frameworks aligned with core parliamentary functions.</p>
+                </div>
                 
                 <div class="highlight" style="background: white; border-left: 4px solid #00796b; margin-bottom: 30px;">
                     <strong style="color: #00796b;">Research Objective:</strong> Investigate the generation of authentic political discourse through domain-specific fine-tuning of large language models on UK parliamentary speeches.
@@ -1009,32 +1061,32 @@
                 <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                     <p><strong>Best Overall Performer: Llama 3.1 8B</strong></p>
                     <ul>
-                        <li>✅ <strong>128,000-token context window</strong> enabled superior performance across multiple dimensions</li>
-                        <li>✅ Enhanced instruction-following capabilities</li>
-                        <li>✅ Better captured argumentative structure and rhetorical patterns</li>
-                        <li>✅ Successfully referenced prior statements and built cumulative cases</li>
+                        <li><strong>128,000-token context window</strong> enabled superior performance across multiple dimensions</li>
+                        <li>Enhanced instruction-following capabilities</li>
+                        <li>Better captured argumentative structure and rhetorical patterns</li>
+                        <li>Successfully referenced prior statements and built cumulative cases</li>
                     </ul>
 
                     <p style="margin-top: 20px;"><strong>Most Stable Performer: Gemma 2 9B</strong></p>
                     <ul>
-                        <li>✅ Consistent scores across all political parties</li>
-                        <li>✅ Performed well regardless of party affiliation or training data abundance</li>
-                        <li>✅ Strong cross-context stability</li>
+                        <li>Consistent scores across all political parties</li>
+                        <li>Performed well regardless of party affiliation or training data abundance</li>
+                        <li>Strong cross-context stability</li>
                     </ul>
 
                     <p style="margin-top: 20px;"><strong>Second Best: Yi 1.5 6B</strong></p>
                     <ul>
-                        <li>✅ Outperformed larger models despite fewer parameters</li>
-                        <li>✅ Bilingual pretraining advantage</li>
-                        <li>✅ 3-trillion-token corpus exposure conferred generalization benefits</li>
+                        <li>Outperformed larger models despite fewer parameters</li>
+                        <li>Bilingual pretraining advantage</li>
+                        <li>3-trillion-token corpus exposure conferred generalization benefits</li>
                     </ul>
 
                     <p style="margin-top: 20px;"><strong>Weakest Performer: Mistral 7B v0.3</strong></p>
                     <ul>
-                        <li>❌ Scored below 0.50 on technical topics (Science: 0.483, Agri-foodstuffs: 0.475)</li>
-                        <li>❌ Struggled with ideologically diverse parties (Non-Affiliated: 0.436, Independent: 0.482)</li>
-                        <li>❌ 8,000-token sliding window insufficient for extended contextual dependencies</li>
-                        <li>❌ Poor at capturing nuanced ideological positioning</li>
+                        <li>Scored below 0.50 on technical topics (Science: 0.483, Agri-foodstuffs: 0.475)</li>
+                        <li>Struggled with ideologically diverse parties (Non-Affiliated: 0.436, Independent: 0.482)</li>
+                        <li>8,000-token sliding window insufficient for extended contextual dependencies</li>
+                        <li>Poor at capturing nuanced ideological positioning</li>
                     </ul>
                 </div>
 
@@ -1053,10 +1105,10 @@
 
                     <p><strong>Statistically Robust Findings (p < 0.05):</strong></p>
                     <ul>
-                        <li>✅ <strong>Self-BLEU decreased:</strong> Reduced formulaic repetition in favor of contextually appropriate variation</li>
-                        <li>✅ <strong>Political Spectrum Alignment (PSA) improved significantly:</strong> Better captured ideological positioning of different political orientations</li>
-                        <li>✅ <strong>Party Alignment scores increased:</strong> Enhanced fidelity to party-specific rhetoric, policy positions, and argumentative strategies</li>
-                        <li>✅ <strong>Improvements held across all model architectures:</strong> Domain adaptation through supervised fine-tuning is transferable and reliable</li>
+                        <li><strong>Self-BLEU decreased:</strong> Reduced formulaic repetition in favor of contextually appropriate variation</li>
+                        <li><strong>Political Spectrum Alignment (PSA) improved significantly:</strong> Better captured ideological positioning of different political orientations</li>
+                        <li><strong>Party Alignment scores increased:</strong> Enhanced fidelity to party-specific rhetoric, policy positions, and argumentative strategies</li>
+                        <li><strong>Improvements held across all model architectures:</strong> Domain adaptation through supervised fine-tuning is transferable and reliable</li>
                     </ul>
 
                     <div class="highlight" style="margin-top: 20px;">
@@ -1081,9 +1133,9 @@
 
                     <p><strong>Validation Results:</strong></p>
                     <ul>
-                        <li>✅ <strong>Party Alignment:</strong> Successfully discriminates between parties, achieving differentiation even for ideologically proximate parties (e.g., Labour vs. Liberal Democrats)</li>
-                        <li>✅ <strong>PSA:</strong> Successfully distinguishes political orientations across the left-right spectrum</li>
-                        <li>✅ Both metrics capture their intended political dimensions with high statistical confidence</li>
+                        <li><strong>Party Alignment:</strong> Successfully discriminates between parties, achieving differentiation even for ideologically proximate parties (e.g., Labour vs. Liberal Democrats)</li>
+                        <li><strong>PSA:</strong> Successfully distinguishes political orientations across the left-right spectrum</li>
+                        <li>Both metrics capture their intended political dimensions with high statistical confidence</li>
                     </ul>
 
                     <div class="highlight" style="margin-top: 20px;">
