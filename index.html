@@ -1154,6 +1154,33 @@
             </div>
         </div>
 
+        <!-- Citation Section -->
+        <div class="card" style="background: white;">
+            <h2 style="color: #667eea; border-bottom: 3px solid #667eea; margin-top: 0;">📚 Citation</h2>
+            <p style="margin-bottom: 20px; color: #333;">If you use ParliaBench in your research, please cite:</p>
+            
+            <div style="position: relative;">
+                <pre id="bibtex-citation" style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6;">@misc{ParliaBench2025,
+    title={ParliaBench: An Evaluation and Benchmarking Framework 
+           for LLM-Generated Parliamentary Speech},
+    author={Marios Koniaris and Argyro Tsipi and Panayiotis Tsanakas},
+    year={2025},
+    eprint={2511.08247},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2511.08247}
+}</pre>
+                
+                <button onclick="copyBibTeX()" style="position: absolute; top: 10px; right: 10px; padding: 8px 16px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; transition: all 0.3s ease;">
+                    📋 Copy
+                </button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px;">
+                <strong>Paper:</strong> <a href="https://arxiv.org/abs/2511.08247" target="_blank" style="color: #667eea; text-decoration: none;">arXiv:2511.08247</a>
+            </div>
+        </div>
+
         <div class="footer">
             <p>ParliaBench: UK Parliamentary Speech Generation using Large Language Models</p>
             <p style="margin-top: 10px; font-size: 0.9em;">Dataset: ParlaMint-GB v5.0 (2015-2022) | Models: Mistral, Llama, Gemma, Qwen, Yi | QLoRA Fine-Tuning | Comprehensive Evaluation Framework</p>
@@ -1180,6 +1207,33 @@
 
             // Scroll to top of page
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copyBibTeX() {
+            const bibtexText = `@misc{ParliaBench2025,
+    title={ParliaBench: An Evaluation and Benchmarking Framework for LLM-Generated Parliamentary Speech},
+    author={Marios Koniaris and Argyro Tsipi and Panayiotis Tsanakas},
+    year={2025},
+    eprint={2511.08247},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2511.08247}
+}`;
+            
+            navigator.clipboard.writeText(bibtexText).then(function() {
+                // Change button text temporarily
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓ Copied!';
+                button.style.background = '#43a047';
+                
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            }).catch(function(err) {
+                alert('Failed to copy citation. Please copy manually.');
+            });
         }
     </script>
 </body>
