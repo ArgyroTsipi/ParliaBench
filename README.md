@@ -5,6 +5,7 @@
 **ParliaBench** is an open research benchmark for evaluating large language models (LLMs) on structured political discourse generation.  
 It processes the *'ParlaMint-GB'* corpus (UK Parliament), fine-tunes multiple transformer-based models, generates synthetic parliamentary speeches, and evaluates their linguistic, semantic, and ideological alignment through a comprehensive suite of metrics.
 
+Find the hugginface at https://argyrotsipi.github.io/ParliaBench/
 ---
 
 ## Abstract  
